@@ -1,0 +1,14 @@
+{
+    "name": "fenetikm/autoload-drupal",
+    "description": "Autoload Drupal code into composer autoloader",
+    "type": "composer-plugin",
+    "authors": [
+      {
+        "name": "Michael Welford",
+        "email": "mail@michaelwelford.com"
+      }
+    ],
+    "require": {
+        "composer-plugin-api": "^1.1"
+    }
+}
