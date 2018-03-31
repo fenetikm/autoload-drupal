@@ -53,6 +53,8 @@ For example:
 
 Here, all modules in `app/modules/contrib/` are added in, all modules in `app/core/modules/` are added in and only the `my_module` module is added in from the `app/modules/custom/` directory.
 
+**NOTE:** only modules with `src` directories will be added in (since they conform to PSR for class autoloading).
+
 ## Rebuild the autoloader
 
 The composer autoloader with the Drupal modules will get generated at install and update. To manually force the refresh of it, do:
@@ -68,7 +70,7 @@ If you have set it up successfully you will see something like the following in 
 ```php
 return array(
   'Drupal\\user\\' => array($baseDir . '/app/core/modules/user/src'),
-  'Drupal\\ua_ccsp_module\\' => array($baseDir . '/app/modules/custom/ua_ccsp_module/src'),
+  'Drupal\\my_module\\' => array($baseDir . '/app/modules/custom/my_module/src'),
   'Drupal\\rad-module\\' => array($baseDir . '/app/modules/contrib/rad-module/src'),
   'Drupal\\entity\\' => array($baseDir . '/app/core/modules/entity/src'),
   );
