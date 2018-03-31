@@ -53,10 +53,23 @@ For example:
 
 Here, all modules in `app/modules/contrib/` are added in, all modules in `app/core/modules/` are added in and only the `my_module` module is added in from the `app/modules/custom/` directory.
 
-### Rebuild the autoloader
+## Rebuild the autoloader
 
 The composer autoloader with the Drupal modules will get generated at install and update. To manually force the refresh of it, do:
 
 ```sh
 composer autoload-dump
+```
+
+## Result
+
+If you have set it up successfully you will see something like the following in your `vendor/composer/autoload_psr4.php` file:
+
+```php
+return array(
+  'Drupal\\user\\' => array($baseDir . '/app/core/modules/user/src'),
+  'Drupal\\ua_ccsp_module\\' => array($baseDir . '/app/modules/custom/ua_ccsp_module/src'),
+  'Drupal\\rad-module\\' => array($baseDir . '/app/modules/contrib/rad-module/src'),
+  'Drupal\\entity\\' => array($baseDir . '/app/core/modules/entity/src'),
+  );
 ```
