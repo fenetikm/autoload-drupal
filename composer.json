@@ -20,6 +20,7 @@
     "extra": {
       "class": "fenetikm\\DrupalAutoloadPlugin"
     },
+    "license": "MIT",
      "minimum-stability": "dev",
     "prefer-stable": true
 }
