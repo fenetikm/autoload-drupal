@@ -23,7 +23,7 @@ Standard stuff:
 ```json
 {
     "require": {
-        "fenetikm/autoload-drupal": "dev-master"
+        "fenetikm/autoload-drupal": "0.1"
     }
 }
 ```
