@@ -124,6 +124,15 @@ class DrupalAutoloadPlugin implements PluginInterface, EventSubscriberInterface 
   }
 
   /**
+   * Build the classmap array.
+   */
+  public function buildClassmap() {
+    $extra = $this->composer->getPackage()->getExtra();
+    $classmap = isset($extra['autoload-drupal']['classmap']) ? $extra['autoload-drupal']['classmap'] : [];
+    return $classmap;
+  }
+
+  /**
    * Build the namespaces array.
    */
   public function buildNamespaces() {
@@ -152,6 +161,7 @@ class DrupalAutoloadPlugin implements PluginInterface, EventSubscriberInterface 
       'version' => '1.0',
       'autoload' => [
         'psr-4' => $this->buildNamespaces(),
+        'classmap' => $this->buildClassmap(),
       ],
     ];
 

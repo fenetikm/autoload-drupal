@@ -23,7 +23,7 @@ Standard stuff:
 ```json
 {
     "require": {
-        "fenetikm/autoload-drupal": "0.1"
+        "fenetikm/autoload-drupal": "0.2"
     }
 }
 ```
@@ -32,7 +32,7 @@ Standard stuff:
 
 This plugin is configured via the `extra` section in your `composer.json`. Usually you would want the `app/modules/contrib/`, `app/core/modules/` and the `app/modules/custom/` directories included. As Drupal can be configured in many ways, none of this is assumed and so all must be added in.
 
-You can also constrain which modules are added in from a directory by specifying an array of the pattern `[ "directory_to_include", [ "module1", "module2" ] ]`.
+You can also constrain which modules are added in from a directory by specifying an array that follows the pattern of `[ "directory_to_include", [ "module1", "module2" ] ]`.
 
 For example:
 
@@ -48,12 +48,32 @@ For example:
             ]
         }
     }
-
 ```
 
 Here, all modules in `app/modules/contrib/` are added in, all modules in `app/core/modules/` are added in and only the `my_module` module is added in from the `app/modules/custom/` directory.
 
 **NOTE:** only modules with `src` directories will be added in (since they conform to PSR for class autoloading).
+
+### Configure classmap
+
+Additionally you may also add in classes that are outside of modules. A typical example is adding in the Drupal testing classes. e.g.
+
+```json
+    "extra": {
+        "autoload-drupal": {
+            "modules": [
+                "app/modules/contrib/",
+                "app/core/modules/",
+                "app/modules/custom/",
+            ],
+            "classmap": [
+                "app/core/tests/Drupal/Tests"
+            ]
+        }
+    }
+```
+
+This will add in all the classes in that directory such as `UnitTestCase`, `AssertHelperTraitTest` etc.
 
 ## Rebuild the autoloader
 
