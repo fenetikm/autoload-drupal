@@ -39,6 +39,20 @@ class DrupalAutoloadPlugin implements PluginInterface, EventSubscriberInterface 
   /**
    * {@inheritdoc}
    */
+  public function deactivate(Composer $composer, IOInterface $io) {
+    // Do nothing.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function uninstall(Composer $composer, IOInterface $io) {
+    // Do nothing.
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public static function getSubscribedEvents() {
     return array(
       ScriptEvents::PRE_AUTOLOAD_DUMP =>
