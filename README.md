@@ -73,7 +73,7 @@ This will add in all the classes in that directory such as `UnitTestCase`, `Asse
 The composer autoloader with the Drupal modules will get generated at install and update. To manually force the refresh of it, do:
 
 ```sh
-composer autoload-dump
+composer dump-autoload
 ```
 
 ## Result
