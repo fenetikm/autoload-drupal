@@ -18,9 +18,9 @@
         }
     },
     "extra": {
-      "class": "fenetikm\\DrupalAutoloadPlugin"
+        "class": "fenetikm\\DrupalAutoloadPlugin"
     },
     "license": "MIT",
-     "minimum-stability": "dev",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
