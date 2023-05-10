@@ -119,6 +119,11 @@ class DrupalAutoloadPlugin implements PluginInterface, EventSubscriberInterface 
 
     array_map(function ($directory) use ($base_dir, &$namespaces) {
       $this->addModuleToNamespaces($namespaces, $directory, $base_dir);
+
+      // If there are tests within the module, autoload them too.
+      if (file_exists($base_dir . $directory . '/tests/src')) {
+        $this->addModuleTestsToNamespaces($namespaces, $directory, $base_dir);
+      }
     }, $module_directories);
   }
 
@@ -135,6 +140,21 @@ class DrupalAutoloadPlugin implements PluginInterface, EventSubscriberInterface 
   public function addModuleToNamespaces(array &$namespaces, $directory, $base_dir) {
     $namespace = 'Drupal\\' . $directory . '\\';
     $namespaces[$namespace] = $base_dir . $directory . '/src';
+  }
+
+  /**
+   * Add module tests to namespaces.
+   *
+   * @param array $namespaces
+   *   The current namespaces array to add into.
+   * @param string $directory
+   *   The directory of the module.
+   * @param string $base_dir
+   *   The base directory to build from.
+   */
+  public function addModuleTestsToNamespaces(array &$namespaces, $directory, $base_dir) {
+    $namespace = 'Drupal\\Tests\\' . $directory . '\\';
+    $namespaces[$namespace] = $base_dir . $directory . '/tests/src';
   }
 
   /**
